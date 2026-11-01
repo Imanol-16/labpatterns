@@ -4,13 +4,15 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import adapter2.Covid19PacientTableModelAdapter;
 import domain.Covid19Pacient;
 import domain.Symptom;
+import factory.FactorySympton;
 
 	public class Main {
 
 		public static void main(String[] args) {
-			Covid19Pacient p=new Covid19Pacient("Ane", 29);
+			Covid19Pacient p=new Covid19Pacient("Ane", 29, new FactorySympton());
 			p.addSymptom(new Symptom("s1", 10, 10), 1);
 			p.addSymptom(new Symptom("s2", 10, 10), 2);
 			p.addSymptom(new Symptom("s3", 10, 10), 3);
@@ -18,7 +20,7 @@ import domain.Symptom;
 			p.addSymptom(new Symptom("s5", 10, 10), 5);
 			
 			
-			Covid19PacientModelAdapter pacientModelAdapter=new Covid19PacientModelAdapter(p);        
+			Covid19PacientTableModelAdapter pacientModelAdapter=new Covid19PacientTableModelAdapter(p);        
 			
 			JFrame j=new JFrame();
 			JTable table = new JTable(pacientModelAdapter);
